@@ -1,4 +1,4 @@
-import db from "@/lib/firebase-admin";
+const db = require("@/lib/firebase-admin");
 
 export default async (req, res) => {
   const snapshot = await db.collection("sites").get();

@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Table, Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 
 const SiteTable = ({ sites }) => {
-  console.log(sites);
   return (
     <Table backgroundColor="white" borderRadius={8}>
       <Thead>
