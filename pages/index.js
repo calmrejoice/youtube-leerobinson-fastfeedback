@@ -15,7 +15,7 @@ const Home = () => {
       h="100vh"
     >
       <Head>
-        <title>Fast Feedback</title>
+        <title>Fast Feedback App</title>
       </Head>
 
       <LogoIcon boxSize={8} />
