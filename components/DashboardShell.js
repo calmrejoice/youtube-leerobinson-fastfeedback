@@ -41,22 +41,16 @@ const DashboardShell = ({ children }) => {
       </Flex>
       <Flex backgroundColor="blackAlpha.50" p={8} h="100vh">
         <Flex direction="column" ml="auto" mr="auto" w="100%" maxW="800px">
-          <Flex direction="row" justifyContent="space-between" align="center">
-            <Box>
-              <Breadcrumb>
-                <BreadcrumbItem>
-                  <BreadcrumbLink color="gray.700" fontSize="sm">
-                    Sites
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-              </Breadcrumb>
-              <Heading mb={4}>My Sites</Heading>
-            </Box>
-            <AddSiteModal
-              buttonBackgroundColor="black"
-              buttonColor="white"
-              buttonTitle="+ Add Site"
-            />
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <BreadcrumbLink color="gray.700" fontSize="sm">
+                Sites
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <Flex direction="row" justifyContent="space-between">
+            <Heading mb={4}>My Sites</Heading>
+            <AddSiteModal>+ Add Site</AddSiteModal>
           </Flex>
           {children}
         </Flex>

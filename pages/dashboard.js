@@ -12,8 +12,6 @@ const Dashboard = () => {
   const { user } = useAuth();
   const { data } = useSWR("/api/sites", fetcher);
 
-  console.log(data);
-
   // if(!user){
   //   // redirect
   // }
