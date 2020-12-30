@@ -2,10 +2,10 @@ import Head from "next/head";
 import { useAuth } from "@/lib/auth";
 import { Button, Flex } from "@chakra-ui/react";
 
-import { LogoIcon } from "@/styles/icons";
+import { LogoIcon, GithubIcon, GoogleIcon } from "@/styles/icons";
 
 const Home = () => {
-  const { user, signinWithGitHub, signout } = useAuth();
+  const { user, signinWithGitHub, signinWithGoogle, signout } = useAuth();
   return (
     <Flex
       as="main"
@@ -32,9 +32,39 @@ const Home = () => {
       {user ? (
         <Button onClick={signout}>Sign Out</Button>
       ) : (
-        <Button mt={4} size="sm" onClick={signinWithGitHub}>
-          Sign In
-        </Button>
+        <>
+          <Button
+            onClick={signinWithGitHub}
+            backgroundColor="gray.900"
+            color="white"
+            leftIcon={<GithubIcon boxSize={5} />}
+            mt={2}
+            h="50px"
+            _hover={{ bg: "gray.700" }}
+            _active={{
+              bg: "gray.800",
+              transform: "scale(0.95)",
+            }}
+          >
+            Continue with Github
+          </Button>
+          <Button
+            onClick={signinWithGoogle}
+            backgroundColor="white"
+            color="gray.900"
+            variant="outline"
+            leftIcon={<GoogleIcon boxSize={5} />}
+            mt={2}
+            h="50px"
+            _hover={{ bg: "gray.100" }}
+            _active={{
+              bg: "gray.100",
+              transform: "scale(0.95)",
+            }}
+          >
+            Continue with Google
+          </Button>
+        </>
       )}
     </Flex>
   );
