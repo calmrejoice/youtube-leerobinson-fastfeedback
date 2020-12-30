@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
-import useSWR, { mutate } from "swr";
+import { mutate } from "swr";
 import {
   Button,
   Modal,
@@ -44,7 +44,7 @@ const AddSiteModal = ({ children }) => {
       isClosable: true,
     });
     mutate(
-      "/api/sites",
+      ["/api/sites", user.token],
       (data) => {
         return { sites: [newSite, ...data.sites] };
       },

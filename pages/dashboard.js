@@ -10,7 +10,7 @@ import SiteTable from "@/components/SiteTable";
 
 const Dashboard = () => {
   const { user } = useAuth();
-  const { data } = useSWR("/api/sites", fetcher);
+  const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher);
 
   // if(!user){
   //   // redirect
@@ -25,7 +25,7 @@ const Dashboard = () => {
   }
   return (
     <DashboardShell>
-      {data.sites.length > 0 ? (
+      {data.sites && data.sites.length > 0 ? (
         <SiteTable sites={data.sites} />
       ) : (
         <EmptyState />

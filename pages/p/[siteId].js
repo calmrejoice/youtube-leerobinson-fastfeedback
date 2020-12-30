@@ -14,11 +14,13 @@ export async function getStaticProps(context) {
     props: {
       initialFeedback: feedback,
     },
+    revalidate: 1,
   };
 }
 
 export async function getStaticPaths() {
   const { sites } = await getAllSites();
+
   const paths = sites.map((site) => {
     return {
       params: {
@@ -26,9 +28,10 @@ export async function getStaticPaths() {
       },
     };
   });
+
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -37,6 +40,10 @@ const SiteFeedback = ({ initialFeedback }) => {
   const router = useRouter();
   const inputEl = useRef(null);
   const [allFeedback, setAllFeedback] = useState(initialFeedback);
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   const onSubmit = (e) => {
     e.preventDefault();
